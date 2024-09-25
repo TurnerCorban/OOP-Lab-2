@@ -2,57 +2,46 @@ import java.time.*;
 import java.time.LocalDateTime;
 
 public class Meeting extends Event implements Completable{
-    String name;
+
+    boolean completed;
     LocalDateTime endDateTime;
-    LocalDateTime startDateTime;
     String location;
-    boolean Completed;
 
-    Meeting(){
-        location = "N/A";
-        Completed = false;
-    }
-
-    void setName(String name){
+    public Meeting(String name, LocalDateTime start, LocalDateTime end, String location) {
+        super();
         this.name = name;
-    }
-
-    String getName(){
-        return name;
-    }
-
-    void setStartDateTime(LocalDateTime startDateTime){
-        this.startDateTime = startDateTime;
-    }
-
-    LocalDateTime getStartDateTime(){
-        return startDateTime;
+        this.dateTime = start;
+        this.endDateTime = end;
+        this.location = location;
     }
 
     @Override
     public void complete() {
-        Completed = true;
+        completed = true;
     }
 
     @Override
-    public boolean isCompleted() {
-        return Completed;
+    public boolean isComplete() {
+        return completed;
     }
 
-    LocalDateTime getEndTime() {
+    public LocalDateTime getEndDateTime() {
         return endDateTime;
     }
-    void setEndTime(LocalDateTime endDateTime) {
-        this.endDateTime = endDateTime;
-    }
-    String getLocation() {
-        return location;
-    }
-    void setLocation(String location) {
-        this.location = location;
-    }
-    Duration getDuration(){
-        return Duration.between(endDateTime, startDateTime);
+
+    public Duration getDuration(){
+        return Duration.between(this.dateTime,endDateTime);
     }
 
+    public String getLocation(){
+        return location;
+    }
+
+    public void setEndDateTime(LocalDateTime endDateTime) {
+        this.endDateTime = endDateTime;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }
