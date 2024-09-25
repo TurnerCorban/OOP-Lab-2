@@ -15,6 +15,10 @@ public class Meeting extends Event implements Completable{
         this.location = location;
     }
 
+    public Meeting() {
+
+    }
+
     @Override
     public void complete() {
         completed = true;
@@ -30,6 +34,7 @@ public class Meeting extends Event implements Completable{
     }
 
     public Duration getDuration(){
+
         return Duration.between(this.dateTime,endDateTime);
     }
 
